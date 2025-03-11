@@ -1,11 +1,11 @@
-package com.example.enigma_machine.classes;
+package com.example.enigma_machine.rotori;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CablaggioRotore {
+public class CablaggioRotori {
 
     public static final ArrayList<Character> confRotore1 = new ArrayList<>();
     public static final ArrayList<Character> confRotore2 = new ArrayList<>();
