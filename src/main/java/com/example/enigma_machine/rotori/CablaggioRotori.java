@@ -13,7 +13,7 @@ public class CablaggioRotori {
 
     static {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(".csv"));
+            BufferedReader br = new BufferedReader(new FileReader("src/main/java/com/example/enigma_machine/rotori/input.txt"));
             String confRotore;
             confRotore = br.readLine();
             for(int i = 0; i < confRotore.length(); i++){
