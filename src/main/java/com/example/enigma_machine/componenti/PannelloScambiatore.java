@@ -2,10 +2,10 @@ package com.example.enigma_machine.componenti;
 
 import java.util.HashMap;
 
-public class Plugboard {
+public class PannelloScambiatore {
     private HashMap<Character, Character> scambi;
 
-    public Plugboard() {
+    public PannelloScambiatore() {
         this.scambi = new HashMap<>();
     }
 
