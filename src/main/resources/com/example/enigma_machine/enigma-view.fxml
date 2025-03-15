@@ -11,7 +11,7 @@
     </padding>
    <children>
       <TextArea fx:id="inputtxt" prefHeight="200.0" prefWidth="200.0" />
-      <Button fx:id="codificabtn" mnemonicParsing="false" text="CODIFICA" />
+      <Button fx:id="codificabtn" mnemonicParsing="false" onAction="#onCodificaBtnClick" text="CODIFICA" />
       <TextArea fx:id="outputtxt" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </VBox>
