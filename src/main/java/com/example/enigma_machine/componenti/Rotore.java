@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Rotore {
     private ArrayList<Character> caratteri;
     int posizione;
+    int scatto;
 
     public Rotore(int numRotore, int posizione) {
         this.caratteri = Configurazioni.getRotore(numRotore);
@@ -19,5 +20,10 @@ public class Rotore {
     public char letteraIndietro (char c) {
         char carattere = (char) (caratteri.indexOf((char) ((c - 'A' + posizione) % 26 + 'A')) + 'A');
         return (char) ((carattere - 'A' - posizione + 26) % 26 + 'A');
+    }
+
+    public boolean ruota() {
+        posizione = (posizione + 1) % 26;
+        return posizione == scatto;
     }
 }
