@@ -15,7 +15,6 @@ public class Riflessore {
     }
 
     public Character codifica(Character lettera) {
-        lettera = Character.toUpperCase(lettera);
         return this.caratteri.get(lettera);
     }
 }
