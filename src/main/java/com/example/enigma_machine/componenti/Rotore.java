@@ -12,11 +12,13 @@ public class Rotore {
     }
 
     public char letteraAvanti (char c) {
+        c = Character.toUpperCase(c);
         char carattere = caratteri.get((c - 'A' + posizione) % 26);
         return (char) ((carattere - 'A' - posizione + 26) % 26 + 'A');
     }
 
     public char letteraIndietro (char c) {
+        c = Character.toUpperCase(c);
         char carattere = (char) (caratteri.indexOf((char) ((c - 'A' + posizione) % 26 + 'A')) + 'A');
         return (char) ((carattere - 'A' - posizione + 26) % 26 + 'A');
     }
