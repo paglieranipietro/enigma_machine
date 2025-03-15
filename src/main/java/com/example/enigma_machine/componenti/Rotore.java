@@ -1,0 +1,23 @@
+package com.example.enigma_machine.componenti;
+
+import java.util.ArrayList;
+
+public class Rotore {
+    private ArrayList<Character> caratteri;
+    int posizione;
+
+    public Rotore(int numRotore, int posizione) {
+        this.caratteri = Configurazioni.getRotore(numRotore);
+        this.posizione = posizione;
+    }
+
+    public char letteraAvanti (char c) {
+        char carattere = caratteri.get((c - 'A' + posizione) % 26);
+        return (char) ((carattere - 'A' - posizione + 26) % 26 + 'A');
+    }
+
+    public char letteraIndietro (char c) {
+        char carattere = (char) (caratteri.indexOf((char) ((c - 'A' + posizione) % 26 + 'A')) + 'A');
+        return (char) ((carattere - 'A' - posizione + 26) % 26 + 'A');
+    }
+}
