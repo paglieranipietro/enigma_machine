@@ -23,6 +23,11 @@ public class Plugboard {
         this.scambi.remove(lettera2);
     }
 
+    public boolean contieneScambio(Character lettera) {
+        lettera = Character.toUpperCase(lettera);
+        return this.scambi.containsKey(lettera);
+    }
+
     public Character scambia (Character lettera) {
         lettera = Character.toUpperCase(lettera);
         return this.scambi.getOrDefault(lettera, lettera);
