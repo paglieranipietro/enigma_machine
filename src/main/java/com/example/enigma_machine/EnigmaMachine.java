@@ -11,10 +11,10 @@ public class EnigmaMachine {
     Riflessore riflessore;
     PannelloScambiatore pannelloScambiatore;
 
-    public EnigmaMachine(int confRotoreDestro, int confRotoreCentrale, int confRotoreSinistro, int posizioneRotoreDestro, int posizioneRotoreCentrale, int posizioneRotoreSinistro) {
-        this.rotoreDestro = new Rotore(confRotoreDestro, posizioneRotoreDestro);
-        this.rotoreCentrale = new Rotore(confRotoreCentrale, posizioneRotoreCentrale);
-        this.rotoreSinistro = new Rotore(confRotoreSinistro, posizioneRotoreSinistro);
+    public EnigmaMachine(int confRotoreDestro, int confRotoreCentrale, int confRotoreSinistro, int posizioneRotoreDestro, int posizioneRotoreCentrale, int posizioneRotoreSinistro, char scattoRotoreDestro, char scattoRotoreCentrale, char scattoRotoreSinistro) {
+        this.rotoreDestro = new Rotore(confRotoreDestro, posizioneRotoreDestro, scattoRotoreDestro);
+        this.rotoreCentrale = new Rotore(confRotoreCentrale, posizioneRotoreCentrale, scattoRotoreCentrale);
+        this.rotoreSinistro = new Rotore(confRotoreSinistro, posizioneRotoreSinistro, scattoRotoreSinistro);
         this.riflessore = new Riflessore();
         this.pannelloScambiatore = new PannelloScambiatore();
     }
@@ -40,7 +40,7 @@ public class EnigmaMachine {
         }
     }
 
-    private String codificaFrase (String frase) {
+    public String codificaFrase (String frase) {
         StringBuilder sb = new StringBuilder();
         int i = 0;
         for (char c : frase.toCharArray()) {
