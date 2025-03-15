@@ -7,9 +7,11 @@ public class Rotore {
     int posizione;
     int scatto;
 
-    public Rotore(int numRotore, int posizione) {
+    public Rotore(int numRotore, int posizione, char scatto) {
         this.caratteri = Configurazioni.getRotore(numRotore);
         this.posizione = posizione;
+        scatto = Character.toUpperCase(scatto);
+        this.scatto = (scatto - 'A' + 26) % 26;
     }
 
     public char letteraAvanti (char c) {
