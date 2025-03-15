@@ -1,19 +1,21 @@
-package com.example.enigma_machine.classes;
+package com.example.enigma_machine.componenti;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class CablaggioRotore {
+public class Configurazioni {
 
     public static final ArrayList<Character> confRotore1 = new ArrayList<>();
     public static final ArrayList<Character> confRotore2 = new ArrayList<>();
     public static final ArrayList<Character> confRotore3 = new ArrayList<>();
+    public static final ArrayList<Character> confRiflessore1 = new ArrayList<>();
 
     static {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(".csv"));
+            BufferedReader br = new BufferedReader(new FileReader("src/input.txt"));
             String confRotore;
             confRotore = br.readLine();
             for(int i = 0; i < confRotore.length(); i++){
@@ -26,6 +28,11 @@ public class CablaggioRotore {
             confRotore = br.readLine();
             for(int i = 0; i < confRotore.length(); i++){
                 confRotore3.add(confRotore.charAt(i));
+            }
+            String confRiflessore;
+            confRiflessore = br.readLine();
+            for(int i = 0; i < confRiflessore.length(); i++){
+                confRiflessore1.add(confRiflessore.charAt(i));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -44,4 +51,15 @@ public class CablaggioRotore {
         }
         return null;
     }
+
+    public static ArrayList<Character> getRiflessore() {
+        return confRiflessore1;
+    }
+
+    public static ArrayList<Character> getAlfabeto() {
+        ArrayList<Character> alfabeto = new ArrayList<>();
+        alfabeto = new ArrayList<>(Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'));
+        return alfabeto;
+    }
 }
+
