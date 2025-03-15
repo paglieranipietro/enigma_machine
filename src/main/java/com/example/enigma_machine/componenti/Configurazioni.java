@@ -15,7 +15,7 @@ public class Configurazioni {
 
     static {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("src/input.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("src/main/java/com/example/enigma_machine/componenti/input.txt"));
             String confRotore;
             confRotore = br.readLine();
             for(int i = 0; i < confRotore.length(); i++){
