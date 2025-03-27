@@ -155,7 +155,7 @@
                         </HBox>
                     </children>
                     <HBox.margin>
-                        <Insets bottom="15.0" left="40.0" right="40.0" top="20.0" />
+                        <Insets left="40.0" right="40.0"/>
                     </HBox.margin>
                 </VBox>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
