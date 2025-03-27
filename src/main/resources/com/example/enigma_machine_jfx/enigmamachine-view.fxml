@@ -1,16 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.enigma_machine_jfx.EnigmaMachineController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+<VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="1200.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.enigma_machine_jfx.EnigmaMachineController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <HBox alignment="CENTER">
+            <children>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
+                    <children>
+                        <Label text="Input">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="15.0" />
+                            </VBox.margin>
+                        </Label>
+                        <TextArea fx:id="inputtxt" maxHeight="200.0" maxWidth="300.0" wrapText="true" />
+                    </children>
+                </VBox>
+                <VBox alignment="TOP_CENTER">
+                    <children>
+                        <Label text="Rotori">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="15.0" />
+                            </VBox.margin>
+                        </Label>
+                        <HBox alignment="CENTER" minWidth="300.0">
+                            <children>
+                                <VBox alignment="CENTER" maxHeight="120.0" minWidth="70.0">
+                                    <children>
+                                        <ComboBox fx:id="riflcmb" maxWidth="40.0" minHeight="30.0" minWidth="70.0" prefHeight="30.0" prefWidth="40.0" style="-fx-font-size: 16px; -fx-alignment: top-left;">
+                                            <VBox.margin>
+                                                <Insets bottom="15.0" />
+                                            </VBox.margin>
+                                        </ComboBox>
+                                        <Button fx:id="menorifbtn" disable="true" maxWidth="40.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" text="-">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Button>
+                                        <TextField fx:id="rifltxt" alignment="CENTER" disable="true" editable="false" maxWidth="60.0" prefHeight="50.0">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </TextField>
+                                        <Button fx:id="piurfbtn" disable="true" maxHeight="35.0" maxWidth="40.0" mnemonicParsing="false" text="+">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Button>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </VBox>
+                                <VBox alignment="CENTER" maxHeight="120.0" minWidth="70.0">
+                                    <children>
+                                        <ComboBox fx:id="rotsxcmb" maxWidth="40.0" minHeight="30.0" minWidth="70.0" prefHeight="30.0" prefWidth="40.0" style="-fx-font-size: 16px; -fx-alignment: top-left;">
+                                            <VBox.margin>
+                                                <Insets bottom="15.0" />
+                                            </VBox.margin>
+                                        </ComboBox>
+                                        <Button fx:id="menosxbtn" maxWidth="40.0" mnemonicParsing="false" onAction="#onMenosxBtnClick" prefHeight="35.0" prefWidth="35.0" text="-">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Button>
+                                        <TextField fx:id="rotsxtxt" alignment="CENTER" editable="false" maxWidth="60.0" prefHeight="50.0">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </TextField>
+                                        <Button fx:id="piusxbtn" maxHeight="35.0" maxWidth="40.0" mnemonicParsing="false" onAction="#onPiusxBtnClick" text="+">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Button>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets left="40.0" />
+                                    </HBox.margin>
+                                </VBox>
+                                <VBox alignment="CENTER" maxHeight="120.0" minWidth="70.0">
+                                    <children>
+                                        <ComboBox fx:id="rotcncmb" maxWidth="40.0" minHeight="30.0" minWidth="70.0" prefHeight="30.0" prefWidth="40.0" style="-fx-font-size: 16px; -fx-alignment: top-left;">
+                                            <VBox.margin>
+                                                <Insets bottom="15.0" />
+                                            </VBox.margin>
+                                        </ComboBox>
+                                        <Button fx:id="menocnbtn" maxWidth="40.0" mnemonicParsing="false" onAction="#onMenocnBtnClick" prefHeight="35.0" prefWidth="35.0" text="-">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Button>
+                                        <TextField fx:id="rotcntxt" alignment="CENTER" editable="false" maxWidth="60.0" prefHeight="50.0">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </TextField>
+                                        <Button fx:id="piucnbtn" maxHeight="35.0" maxWidth="40.0" mnemonicParsing="false" onAction="#onPiucnBtnClick" text="+">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Button>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets left="40.0" right="40.0" />
+                                    </HBox.margin>
+                                </VBox>
+                                <VBox alignment="CENTER" maxHeight="120.0" minWidth="70.0">
+                                    <children>
+                                        <ComboBox fx:id="rotdxcmb" maxWidth="40.0" minHeight="30.0" minWidth="70.0" prefHeight="30.0" prefWidth="40.0" style="-fx-font-size: 16px; -fx-alignment: top-left;">
+                                            <VBox.margin>
+                                                <Insets bottom="15.0" />
+                                            </VBox.margin>
+                                        </ComboBox>
+                                        <Button fx:id="menodxbtn" maxWidth="40.0" mnemonicParsing="false" onAction="#onMenodxBtnClick" prefHeight="35.0" prefWidth="35.0" text="-">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Button>
+                                        <TextField fx:id="rotdxtxt" alignment="CENTER" editable="false" maxWidth="60.0" prefHeight="50.0">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </TextField>
+                                        <Button fx:id="piudxbtn" maxHeight="35.0" maxWidth="40.0" mnemonicParsing="false" onAction="#onPiudxBtnClick" text="+">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Button>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                    <HBox.margin>
+                        <Insets bottom="15.0" left="40.0" right="40.0" top="20.0" />
+                    </HBox.margin>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
+                    <children>
+                        <Label text="Output">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <TextArea fx:id="outputtxt" editable="false" maxHeight="200.0" maxWidth="300.0" wrapText="true" />
+                    </children>
+                </VBox>
+            </children>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+        </HBox>
+    </children>
 </VBox>
