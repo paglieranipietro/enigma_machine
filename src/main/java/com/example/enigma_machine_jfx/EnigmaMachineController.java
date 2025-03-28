@@ -32,13 +32,13 @@ public class EnigmaMachineController {
 
     @FXML
     public void initialize() {
-        inizializzaMenuRotore();
+        inizializzaMenuRotori();
         inizializzaEnigmaMachine();
-        inizializzazioneListenerInputtxt();
-        aggiungiListenerComboBox();
+        inizializzaListenerInputtxt();
+        inizializzaListenerRotoriCmb();
     }
 
-    private void inizializzaMenuRotore(){
+    private void inizializzaMenuRotori(){
         riflcmb.getItems().addAll(new String[]{"A", "B", "C"});
         riflcmb.getSelectionModel().select(1);
         rotsxcmb.getItems().addAll(new String[]{"I", "II", "III"});
@@ -87,7 +87,7 @@ public class EnigmaMachineController {
         EnigmaMachine.aggiornaRotoreTxt(rotdxtxt, false, -1);
     }
 
-    private void inizializzazioneListenerInputtxt() {
+    private void inizializzaListenerInputtxt() {
         inputtxt.textProperty().addListener((observable, oldValue, newValue) -> {
             // Calcola la differenza di lunghezza tra il nuovo valore e il vecchio valore
             int differenza = newValue.length() - oldValue.length();
@@ -152,7 +152,7 @@ public class EnigmaMachineController {
         return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
     }
 
-    private void aggiungiListenerComboBox() {
+    private void inizializzaListenerRotoriCmb() {
         // Listener per riflcmb
         riflcmb.setOnAction(event -> {
             String nuovoValore = (String) riflcmb.getValue();
