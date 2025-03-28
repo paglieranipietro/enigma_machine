@@ -11,7 +11,7 @@ public class EnigmaMachine {
     private Rotore rotoreSinistro;
     private Riflessore riflessore;
     private PannelloScambiatore pannelloScambiatore;
-    private int PC = 0;
+    public int PC = 0;
     private int posInizialedx, posInizialecn, posInizialesx;
     public boolean pannelloScambiatoreAttivo = false;
 
