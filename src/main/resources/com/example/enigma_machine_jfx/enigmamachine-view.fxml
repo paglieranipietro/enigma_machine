@@ -173,5 +173,8 @@
                 <Insets />
             </VBox.margin>
         </HBox>
+        <GridPane fx:id="tastierabtns" alignment="CENTER">
+
+        </GridPane>
     </children>
 </VBox>
