@@ -20,7 +20,7 @@ public class UploadConfigurazioni {
 
     static {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("src/main/java/com/example/enigma_machine/componenti/configurazioni.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("src/main/java/com/example/enigma_machine_jfx/componenti/configurazioni.txt"));
             String confRotore;
             confRotore = br.readLine();
             for(int i = 0; i < confRotore.length() - 2; i++){
