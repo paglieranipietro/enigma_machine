@@ -83,6 +83,7 @@ public class EnigmaMachine {
         }
     }
 
+    //non la usiamo ma potrebbe sempre servire
     public void resettaRotori() {
         rotoreDestro.setPosizione(posInizialedx);
         rotoreCentrale.setPosizione(posInizialecn);
