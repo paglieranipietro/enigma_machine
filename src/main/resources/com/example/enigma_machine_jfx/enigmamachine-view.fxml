@@ -173,6 +173,10 @@
                 <Insets />
             </VBox.margin>
         </HBox>
+        <GridPane fx:id="pannelloscambiatore" alignment="CENTER">
+            <padding>
+                <Insets bottom="25.0" />
+            </padding></GridPane>
         <GridPane fx:id="tastieraLampadine" alignment="CENTER">
             <padding>
                 <Insets bottom="15.0" />
