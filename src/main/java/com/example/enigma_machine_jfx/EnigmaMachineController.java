@@ -215,12 +215,12 @@ public class EnigmaMachineController {
                                 outputtxt.appendText(" ");
                             }
                         }
+                        if (transformedChar >= 'A' && transformedChar <= 'Z') {
+                            gestioneLampadine(true, lampadine[transformedChar - 'A']);
+                        }
                     }
                 }
             } else if (differenza < 0) {
-                // Caratteri rimossi (backspace o cancellazione)
-                int numCaratteriRimossi = oldValue.length() - newValue.length();
-
                 // Verifica se i caratteri rimossi erano validi
                 for (int i = oldValue.length() - 1; i >= newValue.length(); i--) {
                     char removedChar = oldValue.charAt(i);
@@ -246,6 +246,14 @@ public class EnigmaMachineController {
                         }
                     }
                 }
+                gestioneLampadine(true, lampadine['T' - 'A']);
+
+                /*Reset rotori e lampadine se l'input è vuoto, togliere commento se serve
+                if (newValue.length() == 0) {
+                    enigma.resettaRotori();
+                    gestioneLampadine(false, null);
+                }
+                */
             }
 
             // Aggiorna le visualizzazioni dei rotori
@@ -261,6 +269,13 @@ public class EnigmaMachineController {
 
     private boolean carattereMaiuscolo(char c) {
         return (c >= 'A' && c <= 'Z');
+    }
+
+    private void gestioneLampadine(boolean accendere, Lampadina lampadina) {
+        for (Lampadina lamp : lampadine) {
+            if (lamp != null) lamp.spegni();
+        }
+        if (accendere) lampadina.accendi();
     }
 
     private void inizializzaListenerRotoriCmb() {
