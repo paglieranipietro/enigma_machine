@@ -1,6 +1,8 @@
 package com.example.enigma_machine_jfx;
 
+import com.example.enigma_machine_jfx.componenti.Lampadina;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -32,15 +34,20 @@ public class EnigmaMachineController {
     @FXML
     private GridPane tastierabtns;
     @FXML
+    private GridPane tastieraLampadine;
+    @FXML
     private EnigmaMachine enigma;
     @FXML
     private Button[] tasti;
+    @FXML
+    private Lampadina[] lampadine;
 
 
     @FXML
     public void initialize() {
         inizializzaMenuRotori();
         inizializzaEnigmaMachine();
+        inizializzaLampadine();
         inizializzaTastiera();
         inizializzaListenerInputtxt();
         inizializzaListenerRotoriCmb();
@@ -106,6 +113,32 @@ public class EnigmaMachineController {
             enigma.ruotaRotoreDestro(false, true);
             EnigmaMachine.aggiornaRotoreTxt(rotdxtxt, false, -1);
         }
+    }
+
+    private void inizializzaLampadine() {
+        tastieraLampadine.setHgap(10);
+        tastieraLampadine.setVgap(5);
+        tastieraLampadine.setAlignment(Pos.CENTER);
+
+        lampadine = new Lampadina[27];
+
+        // Layout QWERTY per le lampadine
+        String[] righeQWERTY = {
+                "QWERTZUIO",  // Prima riga QWERTY (con Z al posto di Y per layout tedesco)
+                "ASDFGHJK",   // Seconda riga
+                "PYXCVBNML"   // Terza riga (con Y e X invertiti rispetto a layout moderno)
+        };
+
+        for (int i = 0; i < righeQWERTY.length; i++) {
+            String riga = righeQWERTY[i];
+            for (int j = 0; j < riga.length(); j++) {
+                char lettera = riga.charAt(j);
+                lampadine[lettera - 'A'] = new Lampadina(lettera);
+                tastieraLampadine.add(lampadine[lettera - 'A'], j, i);
+            }
+        }
+        // Aggiungi tasto backspace
+        tastieraLampadine.add(lampadine['T' - 'A'] = new Lampadina('⌫'), 8, 1);
     }
 
     private void inizializzaTastiera() {
