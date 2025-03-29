@@ -1,4 +1,53 @@
 package com.example.enigma_machine_jfx.componenti;
 
-public class Lampadina {
+import javafx.geometry.Insets;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.effect.Glow;
+import javafx.geometry.Pos;
+import javafx.scene.text.Font;
+import javafx.animation.Timeline;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.util.Duration;
+
+public class Lampadina extends StackPane {
+    private final Circle cerchio;
+    private final Label lettera;
+    private Timeline animazione;
+
+    public Lampadina(char simbolo) {
+        this.cerchio = new Circle(25, Color.GRAY);
+        this.lettera = new Label(String.valueOf(simbolo));
+        this.lettera.setFont(Font.font(18));
+        this.lettera.setTextFill(Color.BLACK);
+
+        getChildren().addAll(cerchio, this.lettera);
+        setAlignment(Pos.CENTER);
+        setPadding(new Insets(5));
+
+        // Inizializza l'animazione una sola volta
+        animazione = new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(cerchio.fillProperty(), Color.ORANGE)),
+                new KeyFrame(Duration.millis(100), new KeyValue(cerchio.fillProperty(), Color.YELLOW)),
+                new KeyFrame(Duration.millis(200), new KeyValue(cerchio.fillProperty(), Color.GOLD))
+        );
+        animazione.setCycleCount(1);
+    }
+
+    public void accendi() {
+        // Interrompi qualsiasi animazione in corso
+        animazione.stop();
+        cerchio.setFill(Color.YELLOW);
+        cerchio.setEffect(new Glow(0.8));
+        animazione.play();
+    }
+
+    public void spegni() {
+        animazione.stop();
+        cerchio.setFill(Color.GRAY);
+        cerchio.setEffect(null);
+    }
 }
