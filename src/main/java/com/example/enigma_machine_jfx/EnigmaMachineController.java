@@ -10,45 +10,48 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 
+
 public class EnigmaMachineController {
     @FXML
-    public TextArea inputtxt;
+    public TextArea inputtxt; // Area di testo per l'input
     @FXML
-    public TextArea outputtxt;
+    public TextArea outputtxt; // Area di testo per l'output
     @FXML
-    public TextField rotsxtxt;
+    public TextField rotsxtxt; // Campo di testo per visualizzare la posizione del rotore sinistro
     @FXML
-    public TextField rotcntxt;
+    public TextField rotcntxt; // Campo di testo per visualizzare la posizione del rotore centrale
     @FXML
-    public TextField rotdxtxt;
+    public TextField rotdxtxt; // Campo di testo per visualizzare la posizione del rotore destro
     @FXML
-    public TextField rifltxt;
+    public TextField rifltxt; // Campo di testo per visualizzare la posizione del riflessore
     @FXML
-    public ComboBox rotsxcmb;
+    public ComboBox rotsxcmb; // ComboBox per selezionare la configurazione rotore sinistro
     @FXML
-    public ComboBox rotcncmb;
+    public ComboBox rotcncmb; // ComboBox per selezionare la configurazione rotore centrale
     @FXML
-    public ComboBox rotdxcmb;
+    public ComboBox rotdxcmb; // ComboBox per selezionare la configurazione rotore destro
     @FXML
-    public ComboBox riflcmb;
+    public ComboBox riflcmb; // ComboBox per selezionare la configurazione riflessore
     @FXML
-    private GridPane tastierabtns;
+    private GridPane tastierabtns; // Griglia per i pulsanti della tastiera
     @FXML
-    private GridPane tastieraLampadine;
+    private GridPane tastieraLampadine; // Griglia per le lampadine
     @FXML
-    private GridPane pannelloscambiatore;
+    private GridPane pannelloscambiatore; // Griglia per il pannello scambiatore
     @FXML
-    private Button pannellobtn;
+    private Button pannellobtn; // Pulsante per attivare/disattivare il pannello scambiatore
     @FXML
-    private EnigmaMachine enigma;
+    private EnigmaMachine enigma; // Istanza della macchina Enigma
     @FXML
-    private Button[] tasti;
+    private Button[] tasti; // Array di pulsanti della tastiera
     @FXML
-    private Lampadina[] lampadine;
+    private Lampadina[] lampadine; // Array di lampadine
     @FXML
-    private TextField[] scambiatori;
+    private TextField[] scambiatori; // Array di campi di testo per gli scambiatori
 
-
+    /**
+     * Metodo di inizializzazione chiamato automaticamente dopo il caricamento del file FXML.
+     */
     @FXML
     public void initialize() {
         inizializzaMenuRotori();
@@ -60,6 +63,9 @@ public class EnigmaMachineController {
         inizializzaListenerRotoriCmb();
     }
 
+    /**
+     * Inizializza il menu dei rotori, inserisce le configurazioni possibili e li imposta su quelle predefinite.
+     */
     private void inizializzaMenuRotori(){
         riflcmb.getItems().addAll(new String[]{"A", "B", "C"});
         riflcmb.getSelectionModel().select(1);
@@ -71,6 +77,10 @@ public class EnigmaMachineController {
         rotdxcmb.getSelectionModel().select(0);
     }
 
+    /**
+     * Inizializza il pannello scambiatore, crea 6 campi di testo in cui inserire le coppie da scambiare.
+     * Aggiunge il listener per gestire correttamente l'input del campo si testo e il pulsante per attivare/disattivare il pannello.
+     */
     private void inizializzaPannelloScambiatore(){
         scambiatori = new TextField[6];
         pannelloscambiatore.setHgap(10);
@@ -138,6 +148,10 @@ public class EnigmaMachineController {
         pannelloscambiatore.add(pannellobtn, 6, 0);
     }
 
+    /**
+     * Inizializza la macchina Enigma con le configurazioni selezionate nei ComboBox dei rotori e del riflessore.
+     * Imposta le posizioni iniziali dei rotori e del riflessore.
+     */
     private void inizializzaEnigmaMachine(){
         enigma = new EnigmaMachine(rotdxcmb.getSelectionModel().getSelectedIndex(), rotcncmb.getSelectionModel().getSelectedIndex(), rotsxcmb.getSelectionModel().getSelectedIndex(), riflcmb.getSelectionModel().getSelectedIndex());
         rotsxtxt.setText("" + 'A');
@@ -146,6 +160,9 @@ public class EnigmaMachineController {
         rifltxt.setText("" + 'A');
     }
 
+    /**
+     * Gestisce il click sul pulsante per incrementare il rotore sinistro.
+     */
     public void onPiusxBtnClick(){
         if (enigma.PC == 0){
             enigma.ruotaRotoreSinistro(true, true);
@@ -154,6 +171,9 @@ public class EnigmaMachineController {
 
     }
 
+    /**
+     * Gestisce il click sul pulsante per decrementare il rotore sinistro.
+     */
     public void onMenosxBtnClick(){
         if (enigma.PC == 0){
             enigma.ruotaRotoreSinistro(false, true);
@@ -161,6 +181,9 @@ public class EnigmaMachineController {
         }
     }
 
+    /**
+     * Gestisce il click sul pulsante per incrementare il rotore centrale.
+     */
     public void onPiucnBtnClick(){
         if (enigma.PC == 0){
             enigma.ruotaRotoreCentrale(true, true);
@@ -168,6 +191,9 @@ public class EnigmaMachineController {
         }
     }
 
+    /**
+     * Gestisce il click sul pulsante per decrementare il rotore centrale.
+     */
     public void onMenocnBtnClick(){
         if (enigma.PC == 0){
             enigma.ruotaRotoreCentrale(false, true);
@@ -175,6 +201,9 @@ public class EnigmaMachineController {
         }
     }
 
+    /**
+     * Gestisce il click sul pulsante per incrementare il rotore destro.
+     */
     public void onPiudxBtnClick(){
         if (enigma.PC == 0){
             enigma.ruotaRotoreDestro(true, true);
@@ -182,6 +211,9 @@ public class EnigmaMachineController {
         }
     }
 
+    /**
+     * Gestisce il click sul pulsante per decrementare il rotore destro.
+     */
     public void onMenodxBtnClick(){
         if (enigma.PC == 0){
             enigma.ruotaRotoreDestro(false, true);
@@ -189,6 +221,10 @@ public class EnigmaMachineController {
         }
     }
 
+    /**
+     * Inizializza le lampadine della tastiera per visualizzare i caratteri codificati.
+     * Crea un layout QWERTY, fedele all'originale, per le lampadine e aggiunge il tasto backspace.
+     */
     private void inizializzaLampadine() {
         tastieraLampadine.setHgap(10);
         tastieraLampadine.setVgap(5);
@@ -215,6 +251,10 @@ public class EnigmaMachineController {
         tastieraLampadine.add(lampadine['T' - 'A'] = new Lampadina('⌫'), 8, 1);
     }
 
+    /**
+     * Inizializza i pulsanti della tastiera e aggiunge i listener per gestire gli eventi di pressione dei tasti.
+     * Crea un layout QWERTY, fedele all'originale, per la tastiera e aggiunge il tasto backspace.
+     */
     private void inizializzaTastiera() {
         tasti = new Button[27];
         tastierabtns.setVgap(5);
@@ -259,6 +299,11 @@ public class EnigmaMachineController {
         tastierabtns.add(tasti['T' - 'A'], 8, 1);
     }
 
+    /**
+     * Gestisce la pressione di un tasto sulla tastiera.
+     *
+     * @param lettera il carattere del tasto premuto
+     */
     public void gestisciTasto(char lettera) {
         if (lettera == '\b') {
             if (inputtxt.getText().length() > 0) {
@@ -268,6 +313,10 @@ public class EnigmaMachineController {
 
     }
 
+    /**
+     * Inizializza il listener per l'area di testo dell'input e gestisce gli eventi di modifica del testo.
+     * Codifica i caratteri inseriti e aggiorna l'output accendendo le lampadine corrispondenti.
+     */
     private void inizializzaListenerInputtxt() {
         inputtxt.textProperty().addListener((observable, oldValue, newValue) -> {
             // Calcola la differenza di lunghezza tra il nuovo valore e il vecchio valore
@@ -337,14 +386,42 @@ public class EnigmaMachineController {
         });
     }
 
+    /**
+     * Verifica se un carattere è valido.
+     *
+     * @param c il carattere da verificare
+     * @return true se il carattere è valido, false altrimenti
+     */
     private boolean okCarattere(char c) {
-        return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+        return carattereMaiuscolo(c) || carattereMinuscolo(c);
     }
 
+    /**
+     * Verifica se un carattere è maiuscolo.
+     *
+     * @param c il carattere da verificare
+     * @return true se il carattere è maiuscolo, false altrimenti
+     */
     private boolean carattereMaiuscolo(char c) {
         return (c >= 'A' && c <= 'Z');
     }
 
+    /**
+     * Verifica se un carattere è minuscolo.
+     *
+     * @param c il carattere da verificare
+     * @return true se il carattere è minuscolo, false altrimenti
+     */
+    private boolean carattereMinuscolo(char c) {
+        return (c >= 'a' && c <= 'z');
+    }
+
+    /**
+     * Gestisce l'accensione e lo spegnimento delle lampadine.
+     *
+     * @param accendere true se c'è da accendere una lampadina, false se sono da spegnere tutte
+     * @param lampadina la lampadina eventualmente da accendere
+     */
     private void gestioneLampadine(boolean accendere, Lampadina lampadina) {
         for (Lampadina lamp : lampadine) {
             if (lamp != null) lamp.spegni();
@@ -352,6 +429,10 @@ public class EnigmaMachineController {
         if (accendere) lampadina.accendi();
     }
 
+    /**
+     * Inizializza i listener per i ComboBox dei rotori e del riflessore.
+     * Quando viene selezionata una nuova configurazione, viene chiamata la funzione per inizializzare la macchina Enigma.
+     */
     private void inizializzaListenerRotoriCmb() {
         // Listener per riflcmb
         riflcmb.setOnAction(event -> {
