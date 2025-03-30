@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * La classe UploadConfigurazioni carica le configurazioni dei rotori e dei riflessori
+ * da un file di testo e fornisce metodi per accedere a queste configurazioni.
+ */
 public class UploadConfigurazioni {
 
     // Configurazioni dei rotori e riflessori

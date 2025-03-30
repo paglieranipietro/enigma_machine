@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Main class for the Enigma Machine application.
+ * This class initializes the JavaFX application and sets up the main window.
+ */
 public class EnigmaMachineApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {

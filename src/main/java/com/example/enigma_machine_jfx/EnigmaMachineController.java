@@ -10,7 +10,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 
-
+/**
+ * La classe EnigmaMachineController gestisce l'interfaccia utente della macchina Enigma.
+ * Contiene i metodi per inizializzare i componenti dell'interfaccia e gestire gli eventi.
+ */
 public class EnigmaMachineController {
     @FXML
     public TextArea inputtxt; // Area di testo per l'input

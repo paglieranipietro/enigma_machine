@@ -2,6 +2,10 @@ package com.example.enigma_machine_jfx.componenti;
 
 import java.util.ArrayList;
 
+/**
+ * La classe Rotore rappresenta un rotore della macchina Enigma.
+ * Ogni rotore ha una configurazione, una posizione corrente e uno scatto.
+ */
 public class Rotore {
     // Attributi: ArrayList per i caratteri del rotore, posizione corrente del rotore, scatto del rotore, configurazione del rotore
     private ArrayList<Character> caratteri;

@@ -2,6 +2,11 @@ package com.example.enigma_machine_jfx.componenti;
 
 import java.util.HashMap;
 
+/**
+ * La classe PannelloScambiatore gestisce gli scambi di lettere per la macchina Enigma.
+ * Permette di aggiungere scambi, verificare se una lettera è coinvolta in uno scambio
+ * e restituire la lettera scambiata corrispondente.
+ */
 public class PannelloScambiatore {
     private final HashMap<Character, Character> scambi;
 

@@ -3,6 +3,10 @@ package com.example.enigma_machine_jfx.componenti;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * La classe Riflessore rappresenta un riflessore della macchina Enigma.
+ * Ogni riflessore ha una configurazione che mappa i caratteri.
+ */
 public class Riflessore {
     private HashMap<Character, Character> caratteri;
 
