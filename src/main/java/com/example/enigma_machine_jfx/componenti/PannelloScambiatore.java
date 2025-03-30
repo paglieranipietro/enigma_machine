@@ -5,14 +5,19 @@ import java.util.HashMap;
 public class PannelloScambiatore {
     private final HashMap<Character, Character> scambi;
 
+    /**
+     * Costruttore della classe PannelloScambiatore.
+     * Inizializza una mappa per gli scambi di lettere.
+     */
     public PannelloScambiatore() {
         this.scambi = new HashMap<>();
     }
 
     /**
      * Aggiunge una coppia di lettere da scambiare.
-     * @param lettera1 Prima lettera della coppia
-     * @param lettera2 Seconda lettera della coppia
+     *
+     * @param lettera1 Prima lettera dello scambio
+     * @param lettera2 Seconda lettera dello scambio
      */
     public void aggiungiScambio(char lettera1, char lettera2) {
         // Evita scambi con sé stesso o caratteri non alfabetici
@@ -25,6 +30,7 @@ public class PannelloScambiatore {
 
     /**
      * Verifica se una lettera è coinvolta in uno scambio.
+     *
      * @param lettera La lettera da controllare
      * @return true se la lettera ha uno scambio attivo
      */
@@ -35,6 +41,7 @@ public class PannelloScambiatore {
 
     /**
      * Restituisce la lettera scambiata corrispondente.
+     *
      * @param lettera La lettera da trasformare
      * @return La lettera scambiata, o la stessa se non presente
      */
