@@ -6,6 +6,11 @@ import java.util.HashMap;
 public class Riflessore {
     private HashMap<Character, Character> caratteri;
 
+    /**
+     * Costruttore della classe Riflessore.
+     *
+     * @param num il numero del riflessore da caricare
+     */
     public Riflessore(int num) {
         ArrayList<Character> temp = UploadConfigurazioni.getRiflessore(num);
         this.caratteri = new HashMap<>();
@@ -16,6 +21,12 @@ public class Riflessore {
         }
     }
 
+    /**
+     * Codifica un carattere utilizzando il riflessore.
+     *
+     * @param lettera il carattere da codificare
+     * @return il carattere codificato
+     */
     public Character codifica(Character lettera) {
         return this.caratteri.get(lettera);
     }
