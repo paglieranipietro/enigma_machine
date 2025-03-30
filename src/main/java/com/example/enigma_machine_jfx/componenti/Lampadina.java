@@ -13,11 +13,20 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.util.Duration;
 
+/**
+ * La classe Lampadina rappresenta una lampadina grafica che può essere accesa e spenta.
+ * Estende StackPane per poter contenere un cerchio e una lettera contemporaneamente.
+ */
 public class Lampadina extends StackPane {
     private final Circle cerchio;
     private final Label lettera;
     private Timeline animazione;
 
+    /**
+     * Costruttore della classe Lampadina.
+     *
+     * @param simbolo il carattere da visualizzare all'interno della lampadina
+     */
     public Lampadina(char simbolo) {
         this.cerchio = new Circle(25, Color.GRAY);
         this.lettera = new Label(String.valueOf(simbolo));
@@ -37,6 +46,10 @@ public class Lampadina extends StackPane {
         animazione.setCycleCount(1);
     }
 
+    /**
+     * Accende la lampadina, cambiando il colore del cerchio e applicando un effetto di bagliore.
+     * Interrompe qualsiasi animazione in corso e avvia una nuova animazione.
+     */
     public void accendi() {
         // Interrompi qualsiasi animazione in corso
         animazione.stop();
@@ -45,6 +58,10 @@ public class Lampadina extends StackPane {
         animazione.play();
     }
 
+    /**
+     * Spegne la lampadina, ripristinando il colore del cerchio a grigio e rimuovendo qualsiasi effetto.
+     * Interrompe qualsiasi animazione in corso.
+     */
     public void spegni() {
         animazione.stop();
         cerchio.setFill(Color.GRAY);
