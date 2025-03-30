@@ -173,6 +173,11 @@
                 <Insets />
             </VBox.margin>
         </HBox>
+        <Label text="Pannello scambiatore">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
         <GridPane fx:id="pannelloscambiatore" alignment="CENTER">
             <padding>
                 <Insets bottom="25.0" />
