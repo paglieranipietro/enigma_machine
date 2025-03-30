@@ -15,7 +15,14 @@ public class EnigmaMachine {
     private int posInizialedx, posInizialecn, posInizialesx;
     public boolean pannelloScambiatoreAttivo = false;
 
-
+    /**
+     * Costruttore della classe EnigmaMachine.
+     *
+     * @param confRotoreDestro configurazione del rotore destro
+     * @param confRotoreCentrale configurazione del rotore centrale
+     * @param confRotoreSinistro configurazione del rotore sinistro
+     * @param confRiflessore configurazione del riflessore
+     */
     public EnigmaMachine(int confRotoreDestro, int confRotoreCentrale, int confRotoreSinistro, int confRiflessore) {
         this.rotoreDestro = new Rotore(confRotoreDestro + 1, 0);
         this.rotoreCentrale = new Rotore(confRotoreCentrale + 1, 0);
@@ -27,14 +34,29 @@ public class EnigmaMachine {
         this.pannelloScambiatore = new PannelloScambiatore();
     }
 
+    /**
+     * Incrementa il Program Counter (PC).
+     *
+     * @param bottoni indica se l'incremento è causato da un'azione sui bottoni dei rotori
+     */
     private void incrementaPC(boolean bottoni){
         if (!bottoni)PC++;
     }
 
+    /**
+     * Decrementa il Program Counter (PC).
+     */
     private void decrementaPC(){
         if (PC > 0) PC--;
     }
 
+    /**
+     * Codifica un carattere utilizzando i componenti della macchina Enigma.
+     * Pannello scambiatore - rotori da destra a sinistra - riflessore - rotori da sinistra a destra - pannello scambiatore.
+     *
+     * @param c il carattere da codificare
+     * @return il carattere codificato
+     */
     public char codificaCarattere(char c) {
         if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
             incrementaPC(false);
@@ -59,6 +81,9 @@ public class EnigmaMachine {
         }
     }
 
+    /**
+     * Ruota i rotori in avanti tendendo conto dello scatto.
+     */
     private void ruotaRotoriAvanti() {
         if (rotoreDestro.ruotaAvanti(PC)){
             if (rotoreCentrale.ruotaAvanti(PC)){
@@ -71,6 +96,9 @@ public class EnigmaMachine {
         }
     }
 
+    /**
+     * Ruota i rotori indietro tendendo conto dello scatto.
+     */
     public void ruotaRotoriIndietro() {
         if (rotoreDestro.ruotaIndietro(PC)){
             if (rotoreCentrale.ruotaIndietro(PC)){
@@ -83,7 +111,10 @@ public class EnigmaMachine {
         }
     }
 
-    //non la usiamo ma potrebbe sempre servire
+    /**
+     * Resetta i rotori alle posizioni iniziali.
+     * A - A - A predefinito ma può essere modificato con i bottoni dei rotori graficamente.
+     */
     public void resettaRotori() {
         rotoreDestro.setPosizione(posInizialedx);
         rotoreCentrale.setPosizione(posInizialecn);
@@ -91,6 +122,12 @@ public class EnigmaMachine {
         PC = 0;
     }
 
+    /**
+     * Ruota il rotore destro in avanti o indietro ed eventualmente imposta la posizione iniziale.
+     *
+     * @param avanti indica se ruotare in avanti
+     * @param iniziale indica se è la posizione iniziale
+     */
     public void ruotaRotoreDestro(boolean avanti, boolean iniziale) {
         if (avanti){
             incrementaPC(true);
@@ -102,6 +139,12 @@ public class EnigmaMachine {
         if (iniziale) posInizialedx = rotoreDestro.getPosizione();
     }
 
+    /**
+     * Ruota il rotore centrale in avanti o indietro ed eventualmente imposta la posizione iniziale.
+     *
+     * @param avanti indica se ruotare in avanti
+     * @param iniziale indica se è la posizione iniziale
+     */
     public void ruotaRotoreCentrale(boolean avanti, boolean iniziale) {
         if (avanti){
             incrementaPC(true);
@@ -113,6 +156,12 @@ public class EnigmaMachine {
         if (iniziale) posInizialecn = rotoreCentrale.getPosizione();
     }
 
+    /**
+     * Ruota il rotore sinistro in avanti o indietro ed eventualmente imposta la posizione iniziale.
+     *
+     * @param avanti indica se ruotare in avanti
+     * @param iniziale indica se è la posizione iniziale
+     */
     public void ruotaRotoreSinistro(boolean avanti, boolean iniziale) {
         if (avanti){
             incrementaPC(true);
@@ -124,18 +173,41 @@ public class EnigmaMachine {
         if (iniziale) posInizialesx = rotoreSinistro.getPosizione();
     }
 
+    /**
+     * Restituisce la posizione attuale del rotore destro.
+     *
+     * @return la posizione del rotore destro
+     */
     public int getPosizioneRotoreDestro() {
         return rotoreDestro.getPosizione();
     }
 
+    /**
+     * Restituisce la posizione attuale del rotore centrale.
+     *
+     * @return la posizione del rotore centrale
+     */
     public int getPosizioneRotoreCentrale() {
         return rotoreCentrale.getPosizione();
     }
 
+    /**
+     * Restituisce la posizione attuale del rotore sinistro.
+     *
+     * @return la posizione del rotore sinistro
+     */
     public int getPosizioneRotoreSinistro() {
         return rotoreSinistro.getPosizione();
     }
 
+    /**
+     * Aggiorna il testo del TextField con la posizione del rotore corrispondente.
+     * Se è da incrementare la incrementa, altrimenti decrementa oppure imposta la posizione passata come riferimento.
+     *
+     * @param txt il TextField da aggiornare
+     * @param aggiungi indica se incrementare la posizione
+     * @param pos la posizione del rotore
+     */
     public static void aggiornaRotoreTxt(TextField txt, boolean aggiungi, int pos){
         if (pos != -1){
             txt.setText(String.valueOf((char)('A' + pos)));
@@ -152,6 +224,12 @@ public class EnigmaMachine {
         }
     }
 
+    /**
+     * Restituisce la configurazione del rotore.
+     *
+     * @param rotore il rotore di cui ottenere la configurazione
+     * @return la configurazione del rotore
+     */
     public String getConfRotore(String rotore) {
         switch (rotore) {
             case "dx":
@@ -185,14 +263,30 @@ public class EnigmaMachine {
         return null;
     }
 
+    /**
+     * Aggiunge uno scambio al pannello scambiatore.
+     *
+     * @param c1 il primo carattere dello scambio
+     * @param c2 il secondo carattere dello scambio
+     */
     public void aggiungiScambio(char c1, char c2){
         pannelloScambiatore.aggiungiScambio(c1, c2);
     }
 
+    /**
+     * Resetta gli scambi del pannello scambiatore.
+     */
     public void resettaScambi(){
         pannelloScambiatore.reset();
     }
 
+    /**
+     * Verifica se il pannello scambiatore contiene uno scambio.
+     *
+     * @param c il primo carattere dello scambio da verificare
+     * @param c2 il secondo carattere dello scambio da verificare
+     * @return true se il pannello scambiatore contiene lo scambio, altrimenti false
+     */
     public boolean contieneScambio(char c, char c2){
         return pannelloScambiatore.contieneScambio(c) || pannelloScambiatore.contieneScambio(c2);
     }
