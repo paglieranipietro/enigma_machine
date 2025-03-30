@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 public class UploadConfigurazioni {
 
+    // Configurazioni dei rotori e riflessori
     private static final ArrayList<Character> confRotore1 = new ArrayList<>();
     private static char scatto1;
     private static final ArrayList<Character> confRotore2 = new ArrayList<>();
@@ -18,6 +19,7 @@ public class UploadConfigurazioni {
     private static final ArrayList<Character> confRiflessore2 = new ArrayList<>();
     private static final ArrayList<Character> confRiflessore3 = new ArrayList<>();
 
+    // Blocco statico per caricare le configurazioni dai file
     static {
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/main/java/com/example/enigma_machine_jfx/componenti/configurazioni.txt"));
@@ -55,6 +57,12 @@ public class UploadConfigurazioni {
         }
     }
 
+    /**
+     * Restituisce la configurazione del rotore specificato.
+     *
+     * @param numRotore il numero del rotore (1, 2 o 3)
+     * @return la configurazione del rotore come ArrayList di caratteri
+     */
     public static ArrayList<Character> getRotore(int numRotore) {
         switch (numRotore) {
             case 1:
@@ -67,6 +75,12 @@ public class UploadConfigurazioni {
         return null;
     }
 
+    /**
+     * Restituisce la configurazione del riflessore specificato.
+     *
+     * @param numRiflessore il numero del riflessore (0, 1 o 2)
+     * @return la configurazione del riflessore come ArrayList di caratteri
+     */
     public static ArrayList<Character> getRiflessore(int numRiflessore) {
         switch (numRiflessore) {
             case 0:
@@ -79,6 +93,12 @@ public class UploadConfigurazioni {
         return null;
     }
 
+    /**
+     * Restituisce il carattere di scatto del rotore specificato.
+     *
+     * @param numRotore il numero del rotore (1, 2 o 3)
+     * @return il carattere di scatto del rotore
+     */
     public static char getScatto(int numRotore) {
         switch (numRotore) {
             case 1:
@@ -91,10 +111,14 @@ public class UploadConfigurazioni {
         return 'A';
     }
 
+    /**
+     * Restituisce l'alfabeto come ArrayList di caratteri.
+     *
+     * @return l'alfabeto
+     */
     public static ArrayList<Character> getAlfabeto() {
         ArrayList<Character> alfabeto = new ArrayList<>();
         alfabeto = new ArrayList<>(Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'));
         return alfabeto;
     }
 }
-
