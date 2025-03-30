@@ -19,7 +19,7 @@ public class EnigmaMachineApplication extends Application {
 
         // Dimensioni della finestra
         double windowWidth = screenWidth * 0.8;
-        double windowHeight = screenHeight * 0.85;
+        double windowHeight = screenHeight * 0.91;
 
         Scene scene = new Scene(fxmlLoader.load(), windowWidth, windowHeight);
 
