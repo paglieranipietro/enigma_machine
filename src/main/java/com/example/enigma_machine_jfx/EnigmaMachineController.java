@@ -36,16 +36,23 @@ public class EnigmaMachineController {
     @FXML
     private GridPane tastieraLampadine;
     @FXML
+    private GridPane pannelloscambiatore;
+    @FXML
+    private Button pannellobtn;
+    @FXML
     private EnigmaMachine enigma;
     @FXML
     private Button[] tasti;
     @FXML
     private Lampadina[] lampadine;
+    @FXML
+    private TextField[] scambiatori;
 
 
     @FXML
     public void initialize() {
         inizializzaMenuRotori();
+        inizializzaPannelloScambiatore();
         inizializzaEnigmaMachine();
         inizializzaLampadine();
         inizializzaTastiera();
@@ -62,6 +69,73 @@ public class EnigmaMachineController {
         rotcncmb.getSelectionModel().select(1);
         rotdxcmb.getItems().addAll(new String[]{"I", "II", "III"});
         rotdxcmb.getSelectionModel().select(0);
+    }
+
+    private void inizializzaPannelloScambiatore(){
+        scambiatori = new TextField[6];
+        pannelloscambiatore.setHgap(10);
+        pannelloscambiatore.setVgap(5);
+        pannelloscambiatore.setAlignment(Pos.CENTER);
+        for (int i = 0; i < 6; i++) {
+            scambiatori[i] = new TextField();
+            scambiatori[i].setPrefWidth(80);
+            scambiatori[i].setPrefHeight(15);
+            scambiatori[i].setFont(Font.font(18));
+            scambiatori[i].setAlignment(Pos.CENTER);
+            scambiatori[i].setEditable(true);
+            TextField textField = scambiatori[i];
+            textField.textProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue.length() > 2) {
+                    textField.setText(oldValue);
+                    return;
+                }
+
+                if (!newValue.equals(newValue.toUpperCase())) {
+                    String upperValue = newValue.toUpperCase();
+                    textField.setText(upperValue);
+                    textField.positionCaret(upperValue.length());
+                }
+
+                if (!textField.getText().equals(oldValue)) {
+                    enigma.pannelloScambiatoreAttivo = false;
+                    pannellobtn.setText("OFF");
+                }
+            });
+            pannelloscambiatore.add(scambiatori[i], i, 0);
+        }
+
+        pannellobtn = new Button("OFF");
+        pannellobtn.setOnAction(e -> {
+            if (enigma.pannelloScambiatoreAttivo){
+                enigma.pannelloScambiatoreAttivo = false;
+                pannellobtn.setText("OFF");
+            }else {
+                enigma.resettaScambi();
+                boolean is = false;
+                for (int i = 0; i < 6; i++) {
+                    if (scambiatori[i].getText().trim().length() == 2) {
+                        char carattere1 = scambiatori[i].getText().charAt(0);
+                        char carattere2 = scambiatori[i].getText().charAt(1);
+                        if (enigma.contieneScambio(carattere1, carattere2)) {
+                            scambiatori[i].setText("");
+                        } else if (carattere1 >= 'A' && carattere1 <= 'Z' && carattere2 >= 'A' && carattere2 <= 'Z' && carattere1 != carattere2) {
+                            is = true;
+                            enigma.aggiungiScambio(carattere1, carattere2);
+                        }
+                    }else scambiatori[i].setText("");
+                }
+                if (is) {
+                    enigma.pannelloScambiatoreAttivo = true;
+                    pannellobtn.setText("ON");
+                }
+            }
+
+        });
+        pannellobtn.setFont(Font.font(18));
+        pannellobtn.setAlignment(Pos.CENTER);
+        pannellobtn.setPrefWidth(80);
+        pannellobtn.setPrefHeight(20);
+        pannelloscambiatore.add(pannellobtn, 6, 0);
     }
 
     private void inizializzaEnigmaMachine(){
