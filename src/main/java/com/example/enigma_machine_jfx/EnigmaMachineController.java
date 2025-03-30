@@ -54,6 +54,8 @@ public class EnigmaMachineController {
      */
     @FXML
     public void initialize() {
+        inputtxt.setFont(new Font("Open Sans", 16));
+        outputtxt.setFont(new Font("Open Sans", 16));
         inizializzaMenuRotori();
         inizializzaPannelloScambiatore();
         inizializzaEnigmaMachine();
