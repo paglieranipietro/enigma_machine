@@ -324,64 +324,27 @@ public class EnigmaMachineController {
      */
     private void inizializzaListenerInputtxt() {
         inputtxt.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Calcola la differenza di lunghezza tra il nuovo valore e il vecchio valore
-            int differenza = newValue.length() - oldValue.length();
+            outputtxt.setText("");
+            enigma.resettaRotori();
+            gestioneLampadine(false, null);
+            for (int i = 0; i < newValue.length(); i++) {
+                char newChar = newValue.charAt(i);
+                if (okCarattere(newChar)) {
+                    // Codifica il carattere valido e aggiungilo a outputtxt
+                    char transformedChar = enigma.codificaCarattere(newChar);
+                    if (transformedChar != '!') {
+                        outputtxt.appendText(String.valueOf(carattereMaiuscolo(newChar) ? transformedChar : Character.toLowerCase(transformedChar)));
 
-            if (differenza > 0) {
-                // Nuovi caratteri inseriti
-                for (int i = oldValue.length(); i < newValue.length(); i++) {
-                    char newChar = newValue.charAt(i);
-                    if (okCarattere(newChar)) {
-                        // Codifica il carattere valido e aggiungilo a outputtxt
-                        char transformedChar = enigma.codificaCarattere(newChar);
-                        if (transformedChar != '!') {
-                            outputtxt.appendText(String.valueOf(carattereMaiuscolo(newChar) ? transformedChar : Character.toLowerCase(transformedChar)));
-
-                            // Aggiungi uno spazio ogni 5 caratteri (escludendo gli spazi)
-                            String outputTextWithoutSpaces = outputtxt.getText().replace(" ", "");
-                            if (outputTextWithoutSpaces.length() % 5 == 0) {
-                                outputtxt.appendText(" ");
-                            }
-                        }
-                        if (transformedChar >= 'A' && transformedChar <= 'Z') {
-                            gestioneLampadine(true, lampadine[transformedChar - 'A']);
+                        // Aggiungi uno spazio ogni 5 caratteri (escludendo gli spazi)
+                        String outputTextWithoutSpaces = outputtxt.getText().replace(" ", "");
+                        if (outputTextWithoutSpaces.length() % 5 == 0) {
+                            outputtxt.appendText(" ");
                         }
                     }
-                }
-            } else if (differenza < 0) {
-                // Verifica se i caratteri rimossi erano validi
-                for (int i = oldValue.length() - 1; i >= newValue.length(); i--) {
-                    char removedChar = oldValue.charAt(i);
-                    if (okCarattere(removedChar)) {
-                        // Ruota i rotori all'indietro per ogni carattere valido rimosso
-                        enigma.codificaCarattere('\b');
-
-                        // Rimuovi l'ultimo carattere valido da outputtxt (ignorando gli spazi)
-                        String currentOutput = outputtxt.getText();
-                        if (currentOutput.length() > 0) {
-                            // Trova l'ultimo carattere valido (non spazio)
-                            int lastValidCharIndex = currentOutput.length() - 1;
-                            while (lastValidCharIndex >= 0 && currentOutput.charAt(lastValidCharIndex) == ' ') {
-                                lastValidCharIndex--;
-                            }
-
-                            // Se è stato trovato un carattere valido, rimuovilo
-                            if (lastValidCharIndex >= 0) {
-                                outputtxt.setText(currentOutput.substring(0, lastValidCharIndex));
-                            } else {
-                                outputtxt.setText(""); // Se non ci sono caratteri validi, svuota outputtxt
-                            }
-                        }
+                    if (transformedChar >= 'A' && transformedChar <= 'Z') {
+                        gestioneLampadine(true, lampadine[transformedChar - 'A']);
                     }
                 }
-                gestioneLampadine(true, lampadine['T' - 'A']);
-
-                /*Reset rotori e lampadine se l'input è vuoto, togliere commento se serve
-                if (newValue.length() == 0) {
-                    enigma.resettaRotori();
-                    gestioneLampadine(false, null);
-                }
-                */
             }
 
             // Aggiorna le visualizzazioni dei rotori
