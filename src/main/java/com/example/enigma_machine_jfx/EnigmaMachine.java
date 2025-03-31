@@ -5,6 +5,13 @@ import com.example.enigma_machine_jfx.componenti.Riflessore;
 import com.example.enigma_machine_jfx.componenti.Rotore;
 import javafx.scene.control.TextField;
 
+/**
+ * Classe per la gestione della macchina enigma vera e propria.
+ *
+ * @author Pietro Paglierani
+ * @author Francesco Grassi
+ * @author Aminata Diame
+ */
 public class EnigmaMachine {
     private Rotore rotoreDestro;
     private Rotore rotoreCentrale;
