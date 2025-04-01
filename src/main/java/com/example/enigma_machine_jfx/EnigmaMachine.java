@@ -79,10 +79,6 @@ public class EnigmaMachine {
             c = this.rotoreDestro.letteraIndietro(c);
             if (pannelloScambiatoreAttivo) c = this.pannelloScambiatore.scambia(c);
             return c;
-        } else if (c == '\b') {
-            decrementaPC();
-            ruotaRotoriIndietro(); // Ruota i rotori all'indietro per il backspace
-            return '!'; // Indica che è stato premuto backspace
         } else {
             return '!'; // Carattere non valido
         }
