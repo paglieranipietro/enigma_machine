@@ -28,7 +28,7 @@ public class Lampadina extends StackPane {
      * @param simbolo il carattere da visualizzare all'interno della lampadina
      */
     public Lampadina(char simbolo) {
-        this.cerchio = new Circle(25, Color.GRAY);
+        this.cerchio = new Circle(25, Color.WHITE);
         this.lettera = new Label(String.valueOf(simbolo));
         this.lettera.setFont(Font.font(18));
         this.lettera.setTextFill(Color.BLACK);
@@ -64,7 +64,7 @@ public class Lampadina extends StackPane {
      */
     public void spegni() {
         animazione.stop();
-        cerchio.setFill(Color.GRAY);
+        cerchio.setFill(Color.WHITE);
         cerchio.setEffect(null);
     }
 }
