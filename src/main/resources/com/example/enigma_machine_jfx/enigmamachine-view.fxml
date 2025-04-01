@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="1200.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.enigma_machine_jfx.EnigmaMachineController">
+<VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="1200.0" spacing="20.0" style="-fx-background-color: GREY;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.enigma_machine_jfx.EnigmaMachineController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -20,7 +20,7 @@
             <children>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
                     <children>
-                        <Label text="Input">
+                        <Label text="Input" textFill="WHITE">
                             <font>
                                 <Font size="24.0" />
                             </font>
@@ -33,7 +33,7 @@
                 </VBox>
                 <VBox alignment="TOP_CENTER">
                     <children>
-                        <Label text="Rotori">
+                        <Label text="Rotori" textFill="WHITE">
                             <font>
                                 <Font size="24.0" />
                             </font>
@@ -155,12 +155,12 @@
                         </HBox>
                     </children>
                     <HBox.margin>
-                        <Insets left="40.0" right="40.0"/>
+                        <Insets left="40.0" right="40.0" />
                     </HBox.margin>
                 </VBox>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
                     <children>
-                        <Label text="Output">
+                        <Label text="Output" textFill="WHITE">
                             <font>
                                 <Font size="24.0" />
                             </font>
@@ -173,7 +173,7 @@
                 <Insets />
             </VBox.margin>
         </HBox>
-        <Label text="Pannello scambiatore">
+        <Label text="Pannello scambiatore" textFill="WHITE">
             <font>
                 <Font size="24.0" />
             </font>
