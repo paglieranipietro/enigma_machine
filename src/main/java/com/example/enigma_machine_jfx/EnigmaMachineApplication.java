@@ -25,7 +25,7 @@ public class EnigmaMachineApplication extends Application {
         double windowWidth = screenWidth * 0.8;
         double windowHeight = screenHeight * 0.91;
 
-        Scene scene = new Scene(fxmlLoader.load(), windowWidth, windowHeight);
+        Scene scene = new Scene(fxmlLoader.load(), windowWidth < 1200 ? windowWidth : 1200, windowHeight < 800 ? windowHeight : 800);
 
         stage.setTitle("Enigma Machine");
         stage.setScene(scene);
