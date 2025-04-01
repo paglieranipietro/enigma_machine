@@ -235,7 +235,7 @@ public class EnigmaMachineController {
         tastieraLampadine.setVgap(5);
         tastieraLampadine.setAlignment(Pos.CENTER);
 
-        lampadine = new Lampadina[27];
+        lampadine = new Lampadina[26];
 
         // Layout QWERTY per le lampadine
         String[] righeQWERTY = {
@@ -252,8 +252,6 @@ public class EnigmaMachineController {
                 tastieraLampadine.add(lampadine[lettera - 'A'], j, i);
             }
         }
-        // Aggiungi tasto backspace
-        tastieraLampadine.add(lampadine['T' - 'A'] = new Lampadina('⌫'), 8, 1);
     }
 
     /**
@@ -335,14 +333,13 @@ public class EnigmaMachineController {
                     if (transformedChar != '!') {
                         outputtxt.appendText(String.valueOf(carattereMaiuscolo(newChar) ? transformedChar : Character.toLowerCase(transformedChar)));
 
+                        gestioneLampadine(true, lampadine[Character.toUpperCase(transformedChar) - 'A']);
+
                         // Aggiungi uno spazio ogni 5 caratteri (escludendo gli spazi)
                         String outputTextWithoutSpaces = outputtxt.getText().replace(" ", "");
                         if (outputTextWithoutSpaces.length() % 5 == 0) {
                             outputtxt.appendText(" ");
                         }
-                    }
-                    if (transformedChar >= 'A' && transformedChar <= 'Z') {
-                        gestioneLampadine(true, lampadine[transformedChar - 'A']);
                     }
                 }
             }
