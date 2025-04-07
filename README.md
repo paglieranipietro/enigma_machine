@@ -23,6 +23,7 @@ Un'implementazione completa in JavaFX della famosa macchina crittografica Enigma
 - Posizioni iniziali configurabili
 - Supporto per operazioni di backspace/cancellazione
 - Inserimento automatico di spazi ogni 5 caratteri (precisione storica)
+- Viasualizzazione dei caratteri da cifrare e cifrati (versione moderna)
 
 ## Implementazione Tecnica
 
