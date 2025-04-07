@@ -103,14 +103,6 @@ Questa implementazione modella la macchina Enigma I della Wehrmacht (versione a 
 - Riflessore UKW-B (variante più comune di base ma ce ne sono altri da poter scegliere)
 - Processo di cifratura di livello militare
 
-## Documentazione
-
-### Diagrammi delle Classi
-![Diagramma delle Classi](docs/class_diagram.png)
-
-### Diagramma di Sequenza
-![Sequenza di Cifratura](docs/sequence_diagram.png)
-
 ## Testing
 
 Eseguire i test con:
