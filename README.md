@@ -103,7 +103,7 @@ Questa implementazione modella la macchina Enigma I della Wehrmacht (versione a 
 - Riflessore UKW-B (variante più comune di base ma ce ne sono altri da poter scegliere)
 - Processo di cifratura di livello militare
 
-## Testing
+## Testing (ancora da implementare)
 
 Eseguire i test con:
 ```bash
