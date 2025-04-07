@@ -45,9 +45,9 @@ Un'implementazione completa in JavaFX della famosa macchina crittografica Enigma
    ```
 
 2. **Rotazione dei Rotori**:
-   - Il rotore destro avanza ad ogni pressione di tasto
-   - Il rotore centrale avanza quando il rotore destro raggiunge la tacca
-   - Il rotore sinistro avanza quando il rotore centrale raggiunge la tacca
+   - Il rotore destro avanza ad ogni pressione di tasto (e quando il rotore sinistro raggiunge lo scatto anche se è molto raro)
+   - Il rotore centrale avanza quando il rotore destro raggiunge la tacca/scatto (se si trova già nella sua posizione di scatto quando viene attivato si verifica un doppio avanzamento)
+   - Il rotore sinistro avanza quando il rotore centrale raggiunge la tacca/scatto
 
 ## Guida all'Avvio
 
@@ -58,8 +58,8 @@ Un'implementazione completa in JavaFX della famosa macchina crittografica Enigma
 
 ### Installazione
 ```bash
-git clone https://github.com/tuoutente/enigma-machine-jfx.git
-cd enigma-machine-jfx
+git clone https://github.com/paglieranipietro/enigma_machine.git
+cd enigma_machine
 mvn clean install
 ```
 
@@ -76,7 +76,7 @@ Modificare `configurazioni.txt` per cambiare:
 - Posizioni delle tacche (ultimo carattere di ogni riga dei rotori)
 - Cablaggio dei riflessori (righe 4-6)
 
-Esempio di formato:
+Esempio di formato (quello attuale):
 ```
 EKMFLGDQVZNTOWYHXUSPAIBRCJ Q  # Cablaggio Rotore I + tacca
 AJDKSIRUXBLHWTMCQGZNPYFVOE E  # Cablaggio Rotore II + tacca
@@ -100,7 +100,7 @@ FVPJIAOYEDRZXWGCTKUQSBNMHL    # Riflessore C
 
 Questa implementazione modella la macchina Enigma I della Wehrmacht (versione a 3 rotori) con:
 - Layout tastiera QWERTZ standard
-- Riflessore UKW-B (variante più comune)
+- Riflessore UKW-B (variante più comune di base ma ce ne sono altri da poter scegliere)
 - Processo di cifratura di livello militare
 
 ## Documentazione
@@ -123,6 +123,7 @@ La copertura dei test include:
 - Logica di rotazione dei rotori
 - Sostituzioni del pannello scambiatore
 - Caricamento delle configurazioni
+- Accensione delle lampadine
 
 ## Come Contribuire
 
@@ -131,10 +132,6 @@ La copertura dei test include:
 3. Fai commit delle tue modifiche (`git commit -m 'Aggiungi una feature incredibile'`)
 4. Push del branch (`git push origin feature/FeatureIncredibile`)
 5. Apri una Pull Request
-
-## Licenza
-
-Distribuito con licenza MIT. Vedi `LICENSE` per maggiori informazioni.
 
 ## Riconoscimenti
 - Progettisti originali della macchina Enigma
