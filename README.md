@@ -1,7 +1,7 @@
 
 # Simulatore della Macchina Enigma - Implementazione JavaFX
 
-![image](https://github.com/user-attachments/assets/f3c3e4e6-5c9f-42a9-998c-9c76fa4647e6)
+![Enigma-video](https://github.com/user-attachments/assets/aee5bc7a-74bc-4e1a-9d81-c0f7b52f5e22)
 
 Un'implementazione completa in JavaFX della famosa macchina crittografica Enigma utilizzata durante la Seconda Guerra Mondiale. Questo progetto simula fedelmente il meccanismo di cifratura elettromeccanico con tutti i suoi componenti principali.
 
